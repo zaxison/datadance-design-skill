@@ -1,0 +1,8 @@
+interface:
+  display_name: "DataDance Design"
+  short_description: "Make web pages match DataDance design."
+  brand_color: "#5364FF"
+  default_prompt: "Use $datadance-design to create or refine this desktop web page so it matches DataDance visual and interaction standards."
+
+policy:
+  allow_implicit_invocation: true
