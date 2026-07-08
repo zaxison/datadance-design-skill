@@ -37,6 +37,8 @@ import '@datadance/ui/styles.css';
 
 Do not build the page around a generic sidebar.
 
+Do not manually translate the DataDance React sidebar into static HTML/CSS/JS. If the target is a static demo, mount `@datadance/ui` as a React island, convert the demo to React/Vite, or use an official static sidebar bundle if one exists. If none is possible, stop and report the blocker rather than shipping an approximate sidebar.
+
 ## 3. Replace Structure
 
 - Replace any existing outer nav/sidebar with `DataDanceShell`.
@@ -79,4 +81,3 @@ For each inventory item:
 Run the checklist in `datadance-checklist.md`.
 
 If a check fails, fix the component/package usage first rather than approximating with local ad hoc styles.
-

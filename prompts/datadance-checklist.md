@@ -7,6 +7,7 @@ Run this checklist before considering a generated or refactored page complete.
 - `@datadance/ui` is installed, or `packages/datadance-ui` is copied locally.
 - Page imports package styles.
 - Page uses `DataDanceShell` or an exact local package equivalent.
+- DataDance sidebar is not a hand-written approximate static translation.
 
 ## Shell
 
@@ -28,6 +29,15 @@ Run this checklist before considering a generated or refactored page complete.
 - User profile hover opens user menu.
 - User menu remains usable while moving pointer from profile to popup.
 - Menu icons render as recognizable icons, not black rectangles, empty squares, broken images, or solid blocks.
+- Collapsed parent menu rows do not show submenu arrows.
+- Expanded parent menu rows show arrows only when the item has children.
+- Expanded top-right collapse button icon matches the current DataDance implementation or exact source icon.
+- Sidebar visual states were checked, not only DOM dimensions:
+  - collapsed
+  - expanded
+  - top-level hover
+  - expanded submenu and active child
+  - user profile hover menu
 
 ## Yuanli Components
 
@@ -73,4 +83,3 @@ Every applicable control has:
 - No decorative gradient/orb/background gimmicks.
 - Text does not overflow controls.
 - Cards are not nested inside cards.
-

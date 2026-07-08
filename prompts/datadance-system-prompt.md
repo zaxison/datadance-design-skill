@@ -30,6 +30,14 @@ import '@datadance/ui/styles.css';
 
 Do not hand-write a new sidebar when `DataDanceShell` is available.
 
+If the page is a static HTML demo, do not manually translate the React sidebar into ad hoc HTML/CSS/JS. Use one of these paths:
+
+- Mount `@datadance/ui` as a React island inside the static demo.
+- Convert the demo to a React/Vite project and use `DataDanceShell`.
+- Use an official static sidebar bundle if one is provided.
+
+If none of these paths is possible, stop and report that exact DataDance sidebar consistency is blocked. Do not continue with an approximate static sidebar.
+
 ## Fixed Shell Rules
 
 Every primary DataDance desktop page must use:
@@ -55,6 +63,10 @@ Required behavior:
 - Active route highlights the correct item.
 - User profile hover opens the user menu.
 - Menu icons must be real icon silhouettes. They must not be black rectangles, broken images, empty squares, or CSS-only blocks.
+- Collapsed parent menu rows must not show submenu arrows.
+- Expanded parent rows show arrows only for items with children.
+- The expanded top-right collapse button icon must match the current DataDance implementation or exact source icon.
+- Do not draw approximate replacement icons. If the source uses lucide, import the same lucide icon or copy the official SVG path.
 
 ## Yuanli Component Rules
 
@@ -131,4 +143,3 @@ Before editing, inventory the existing page:
 - keyboard shortcuts
 
 After editing, verify every original behavior is preserved or intentionally improved. Do not silently drop interactions.
-

@@ -1,8 +1,8 @@
 # DataDance Sidebar And User Menu
 
-The sidebar is a strict DataDance rule. Prefer the shared `@datadance/ui` package / `packages/datadance-ui` implementation first, then the current local implementation in `src/components/Sidebar/index.jsx`, over the older Figma sidebar page.
+The sidebar is a strict DataDance rule. Prefer the shared `@datadance/ui` package / `packages/datadance-ui` implementation first, then the current local implementation in `src/components/Sidebar/index.jsx`, over the older Figma sidebar page. Also read `references/sidebar-implementation-policy.md` before implementing any sidebar.
 
-When this skill is used outside the DataDance repo, do not merely describe or approximate the sidebar. Use the shared `DataDanceShell`/`DataDanceSidebar` component package where possible. If the package cannot be used, create a project-local `DataDanceSidebar` component that follows this contract, then wrap pages in the DataDance app shell defined in `references/app-shell.md`. A generic admin sidebar, shadcn sidebar, Arco Menu, or marketing-style navigation is not acceptable.
+When this skill is used outside the DataDance repo, do not merely describe, approximate, or manually translate the sidebar. Use the shared `DataDanceShell`/`DataDanceSidebar` component package where possible. If the package cannot be used, copy the package or source implementation with dependencies. A generic admin sidebar, shadcn sidebar, Arco Menu, marketing-style navigation, or hand-written static approximation is not acceptable.
 
 For the right-side white work surface, browser-edge gutters, and global background, read `references/app-shell.md`. Those rules are not part of the sidebar itself.
 
@@ -217,6 +217,7 @@ Before finishing a generated page, verify:
 - Active menu item follows the current route.
 - User profile hover opens the DataDance user menu.
 - No generic sidebar/menu component is visible.
+- No hand-written approximate static sidebar is visible.
 
 ## Required Sidebar Acceptance Check
 
@@ -255,9 +256,22 @@ Interactions:
 - Profile hover opens the user menu.
 - User menu remains open while moving from profile to popup, then closes after pointer leaves.
 - User menu groups and destructive logout styling match the DataDance rules.
+- Collapsed parent menu rows do not show submenu arrows.
+- Expanded parent menu rows show arrows only for items with children.
+- The expanded top-right collapse button icon matches the current DataDance component or exact same source icon.
+
+Visual comparison:
+
+- Capture or inspect collapsed sidebar.
+- Capture or inspect expanded sidebar.
+- Capture or inspect top-level hover state.
+- Capture or inspect expanded submenu and active child state.
+- Capture or inspect user profile hover menu.
+- Compare against the current `@datadance/ui` / DataDance source implementation when possible.
 
 Failure handling:
 
 - If any check fails, fix the package import/copy first.
 - Do not replace the sidebar with a newly hand-written approximation.
 - Do not finish the task with a generic admin sidebar.
+- Do not finish the task if the sidebar only passes width/DOM checks but fails visual details.
