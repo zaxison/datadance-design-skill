@@ -42,6 +42,6 @@ try {
   console.log(`DataDance UI verified: ${requiredExports.length} required exports and package CSS are available.`);
 } catch (error) {
   console.error(`DataDance UI verification failed: ${error.message}`);
-  console.error('Install the approved package with: npm install github:zaxison/datadance-ui#v0.2.0');
+  console.error('Install the approved package with: npm install github:zaxison/datadance-ui#v0.2.1');
   process.exit(1);
 }

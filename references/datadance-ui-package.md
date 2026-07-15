@@ -66,13 +66,13 @@ The component package is distributed from its standalone repository. For cross-p
 Current standalone package repository:
 
 - GitHub: `https://github.com/zaxison/datadance-ui`
-- Current approved release: `v0.2.0`
-- Install: `npm install github:zaxison/datadance-ui#v0.2.0`
+- Current approved release: `v0.2.1`
+- Install: `npm install github:zaxison/datadance-ui#v0.2.1`
 
 Install in new projects with:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.2.0
+npm install github:zaxison/datadance-ui#v0.2.1
 ```
 
 The standalone repository contains compiled ESM and compiled CSS in `dist`. The target project does not need Tailwind to render the package correctly.
@@ -111,12 +111,12 @@ When using `$datadance-design` in another repo:
 2. Check whether a local `packages/datadance-ui` copy exists.
 3. If either exists, import `DataDanceShell` and package styles.
 4. If neither exists, add the package before building pages:
-   - Required React/Vite release: `npm install github:zaxison/datadance-ui#v0.2.0`.
+   - Required React/Vite release: `npm install github:zaxison/datadance-ui#v0.2.1`.
    - If the repo/tag differs, use the user-provided GitHub package source.
    - If network installation is unavailable, copy the full `packages/datadance-ui` directory into the target project.
 5. Import Yuanli/DataDance `DD*` components from the package when available.
 6. If a required shared component is missing, stop and report the missing export. Do not invent an approximation inside page code.
-7. For a component outside the approved v0.2.0 set, ask whether to extend `@datadance/ui` or use a page-specific control. Never label a page-specific approximation as a Yuanli component.
+7. For a component outside the approved v0.2.1 set, ask whether to extend `@datadance/ui` or use a page-specific control. Never label a page-specific approximation as a Yuanli component.
 
 Never use a generic shell, sidebar, native dropdown, native date picker, or generic component-library default as a shortcut.
 

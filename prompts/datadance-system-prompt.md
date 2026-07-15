@@ -18,7 +18,7 @@ Before implementing the page, check whether the project has `@datadance/ui` or a
 If absent, install:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.2.0
+npm install github:zaxison/datadance-ui#v0.2.1
 ```
 
 Then run the skill's `scripts/verify-datadance-ui.mjs` from the target project root. Do not compose the page until verification passes. Installation or verification failure is a blocker, not permission to create an approximate replacement.

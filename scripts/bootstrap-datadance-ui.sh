@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACKAGE_SPEC="github:zaxison/datadance-ui#v0.2.0"
+PACKAGE_SPEC="github:zaxison/datadance-ui#v0.2.1"
 
 if [[ ! -f package.json ]]; then
   echo "DataDance bootstrap failed: run this script from the target project root (package.json is missing)." >&2

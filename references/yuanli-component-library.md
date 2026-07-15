@@ -6,7 +6,7 @@ Source file:
 
 - Figma: `源力基础组件 light（周鸿翔）`, file key `HebSNPzZ5J8amDStIBiKLu`.
 - Canonical package target: `@datadance/ui` / `packages/datadance-ui`.
-- Canonical React/Vite implementation: `@datadance/ui` v0.2.0.
+- Canonical React/Vite implementation: `@datadance/ui` v0.2.1.
 
 The copied Figma file contains 69 pages, including global styles, layout primitives, and components across basic, navigation, data display, data input, and feedback categories. The implemented subset focuses on high-frequency page generation components.
 
@@ -85,10 +85,10 @@ Implemented v1 components:
 ## Required Usage Rules
 
 - Do not use generic Arco defaults, shadcn defaults, raw Tailwind controls, or browser-native popups when a Yuanli/DataDance component exists.
-- If working in another project, first install `@datadance/ui` v0.2.0. If the package does not expose a needed shared component, stop and extend the package in its own repository; do not copy an ad hoc page-local approximation.
+- If working in another project, first install `@datadance/ui` v0.2.1. If the package does not expose a needed shared component, stop and extend the package in its own repository; do not copy an ad hoc page-local approximation.
 - For primary pages, use `DDPageHeader` and choose the same variant logic as the Figma `header` page.
 - For filter rows, use `DDInput label="..."` and `DDSelect label="..."` to reproduce the built-in-label source component.
-- `DDSelect` must render the dropdown menu itself: white menu surface, 4px item radius, 32px option rows, selected light-primary background, hover neutral background, and `0 8px 24px rgba(29,33,41,0.12)` shadow.
+- `DDSelect` must use the packaged source implementation: 32px control height, 4px radius, neutral `#DDE2E9` outline, `#3370FF` hover outline, blue focus halo, and a custom single/multiple-select panel. Multiple selection uses removable compact tags in the trigger and checkbox rows in the panel.
 - Date picker, cascader, and tree select must render their panels themselves. Do not rely on browser-native picker/dropdown UI.
 - For header auxiliary actions, use `DDIconButton`; do not render labeled secondary buttons unless the Figma header variant calls for them.
 - For normal creation actions, use `DDButton` default primary with a 32px height.
@@ -100,10 +100,10 @@ Implemented v1 components:
 
 - Default control height: 32px.
 - Button text: 13px / 22px, medium, 0.039px tracking.
-- Built-in label controls: left label segment and right input/select segment, both white, 6px outer radius, `#E2E5F1` 1px shadow border.
+- Built-in label Select: left label segment and right selector segment, both white, 4px outer radius, `#DDE2E9` 1px outline.
 - Input placeholder: `#737A87`.
 - Select filled text: `#0B0B0F`; open state rotates the chevron and uses primary focus border.
-- Dropdown menu: top offset 4px, 4px padding, `#ECEEF9` border, 6px radius, selected item uses primary text and light-primary background.
+- Select dropdown menu: 2px top offset, white surface, `#E5E6EB` border, 4px radius, 34px option rows, and `0 8px 20px rgba(29,33,41,0.12)` shadow.
 - Switch: 40px by 22px, 18px handle, primary fill when checked, `#C9CDD4` when off.
 - Date picker panel: white surface, 6px radius, `#ECEEF9` border, compact 28px date cells, selected date uses primary fill.
 - Cascader/tree panels: 32px rows, hover `#F6F8FA`, selected light-primary background and primary text.

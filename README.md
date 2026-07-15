@@ -12,7 +12,7 @@ This repository contains two usable forms:
 New projects should install the shared DataDance UI package before generating pages:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.2.0
+npm install github:zaxison/datadance-ui#v0.2.1
 ```
 
 The repository also includes deterministic setup and verification scripts. Run them from the target React project root:

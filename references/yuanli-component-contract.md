@@ -82,7 +82,9 @@ Each component implementation must cover:
 - Use `DDSelect`.
 - Render the dropdown panel in code; do not rely on browser-native select visuals.
 - Chevron rotates in open state.
-- Selected option uses light primary background and primary text.
+- Use the packaged 32px/4px-radius Select states: neutral outline, blue hover outline, and blue active/focus halo.
+- Multiple selection uses removable tags in the trigger and checkbox rows in the panel; selecting an option keeps the panel open.
+- Selected option uses the packaged light selected background.
 - Hover option uses neutral hover fill.
 - Keyboard support should include Escape, ArrowUp, ArrowDown, and Enter where possible.
 

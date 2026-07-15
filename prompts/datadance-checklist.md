@@ -4,7 +4,7 @@ Run this checklist before considering a generated or refactored page complete.
 
 ## Package
 
-- The approved `@datadance/ui` release is installed from `github:zaxison/datadance-ui#v0.2.0`, or a newer release explicitly approved by the user.
+- The approved `@datadance/ui` release is installed from `github:zaxison/datadance-ui#v0.2.1`, or a newer release explicitly approved by the user.
 - `scripts/verify-datadance-ui.mjs` passes from the target project root.
 - Page imports package styles.
 - Page uses the packaged `DataDanceShell`.

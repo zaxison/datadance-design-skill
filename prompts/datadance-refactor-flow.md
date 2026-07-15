@@ -25,7 +25,7 @@ Check for `@datadance/ui`.
 If missing:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.2.0
+npm install github:zaxison/datadance-ui#v0.2.1
 ```
 
 Run the skill's verification script from the target project root before changing page structure:

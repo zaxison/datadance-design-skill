@@ -13,7 +13,7 @@ From the target project root, run:
 Or install and verify explicitly:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.2.0
+npm install github:zaxison/datadance-ui#v0.2.1
 node /absolute/path/to/datadance-design/scripts/verify-datadance-ui.mjs
 ```
 
