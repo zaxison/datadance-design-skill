@@ -6,8 +6,8 @@ This file defines how DataDance pages must consume Yuanli-style components. It i
 
 1. Use code components from `@datadance/ui` or `packages/datadance-ui`.
 2. If the target project does not have the package yet, copy/install the package before building the page.
-3. During the transition period, `src/components/datadance/index.jsx` is the local implementation reference for Yuanli-derived components.
-4. Only hand-write a component when neither package nor local component exists, and then match the relevant state contract below.
+3. If package installation fails, stop and report the blocker.
+4. If a shared component is missing, extend and release `@datadance/ui`; do not hand-write a component inside the generated page and call it Yuanli-compatible.
 
 Do not use raw browser-native controls for final UI when Yuanli behavior is expected. In particular, do not use native `<select>` dropdowns, native date picker popups, or unstyled checkbox/switch controls.
 
@@ -20,6 +20,7 @@ Every DataDance project should provide these components:
 - Actions: `DDButton`, `DDIconButton`.
 - Inputs: `DDInput`, `DDSelect`, `DDCascader`, `DDDatePicker`, `DDTreeSelect`, `DDSwitch`.
 - Navigation/data: `DDTabs`, `DDTable`, `DDTag`.
+- Navigation/data also includes `DDPagination`.
 - Feedback/overlays: `DDAlert`, `DDModal`, `DDDrawer`.
 
 Generated pages must import and use these components instead of recreating equivalent controls in page code.

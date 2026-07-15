@@ -6,7 +6,7 @@ Source file:
 
 - Figma: `源力基础组件 light（周鸿翔）`, file key `HebSNPzZ5J8amDStIBiKLu`.
 - Canonical package target: `@datadance/ui` / `packages/datadance-ui`.
-- Current local implementation reference during migration: `src/components/datadance/index.jsx`.
+- Canonical React/Vite implementation: `@datadance/ui` v0.2.0.
 
 The copied Figma file contains 69 pages, including global styles, layout primitives, and components across basic, navigation, data display, data input, and feedback categories. The implemented subset focuses on high-frequency page generation components.
 
@@ -28,6 +28,7 @@ import {
   DDInput,
   DDModal,
   DDPageHeader,
+  DDPagination,
   DDSelect,
   DDSwitch,
   DDTable,
@@ -37,7 +38,7 @@ import {
 } from '@datadance/ui';
 ```
 
-Current local fallback import:
+The DataDance source repo may use this development import while maintaining the package:
 
 ```jsx
 import {
@@ -51,6 +52,7 @@ import {
   DDInput,
   DDModal,
   DDPageHeader,
+  DDPagination,
   DDSelect,
   DDSwitch,
   DDTable,
@@ -72,6 +74,7 @@ Implemented v1 components:
 - `DDDatePicker`: custom date picker panel; do not use browser-native date inputs for final UI.
 - `DDTreeSelect`: custom tree dropdown with hierarchical options.
 - `DDTabs`: first-level tab visual style.
+- `DDPagination`: compact pagination with total count, previous/next controls, page states, and ellipsis.
 - `DDTag`: default/primary/success/warning/danger tags, optional close icon.
 - `DDCard`: white bordered card with DataDance hover state.
 - `DDTable`: compact table with 40px header/rows.
@@ -82,7 +85,7 @@ Implemented v1 components:
 ## Required Usage Rules
 
 - Do not use generic Arco defaults, shadcn defaults, raw Tailwind controls, or browser-native popups when a Yuanli/DataDance component exists.
-- If working in another project, first install/copy `@datadance/ui` / `packages/datadance-ui`. If the package does not yet expose a needed component, copy the equivalent from `src/components/datadance`; then build the page with those components.
+- If working in another project, first install `@datadance/ui` v0.2.0. If the package does not expose a needed shared component, stop and extend the package in its own repository; do not copy an ad hoc page-local approximation.
 - For primary pages, use `DDPageHeader` and choose the same variant logic as the Figma `header` page.
 - For filter rows, use `DDInput label="..."` and `DDSelect label="..."` to reproduce the built-in-label source component.
 - `DDSelect` must render the dropdown menu itself: white menu surface, 4px item radius, 32px option rows, selected light-primary background, hover neutral background, and `0 8px 24px rgba(29,33,41,0.12)` shadow.
@@ -128,14 +131,12 @@ Implemented v1 components:
 - `抽屉/Drawer`
 - `对话框/Modal`
 
-## Backlog
+## Expansion Backlog
 
 Add these next when a page needs them:
 
-- Migrate the current `src/components/datadance` components into `packages/datadance-ui` so other projects can consume one package.
 - Add `Timepicker`
 - Add `Autocomplete`, `Transfer`
 - Add `Checkbox`, `Radio`, `Slider`, `Inputnumber`
 - `Upload`
 - `Popover`, `Tooltip`, `Popconfirm`, `Message`, `Notification`, `Progress`
-- `Pagination` interactive React component, beyond static table/footer use

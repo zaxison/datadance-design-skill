@@ -2,11 +2,11 @@
 
 The DataDance sidebar and app shell should be reused as code, not regenerated from prose.
 
-Yuanli-style base components should also be reused as code. The package is the preferred home for the DataDance shell/sidebar and the `DD*` component family. During migration, the local `src/components/datadance` implementation is the fallback reference.
+Yuanli-style base components must also be reused as code. The package is the canonical home for the DataDance shell/sidebar and the approved `DD*` component family.
 
 Source repository:
 
-- GitHub: `https://github.com/zaxison/datadance`
+- Standalone GitHub package: `https://github.com/zaxison/datadance-ui`
 - Local package directory in this repo: `packages/datadance-ui`
 
 Exports:
@@ -23,6 +23,7 @@ import {
   DDInput,
   DDModal,
   DDPageHeader,
+  DDPagination,
   DDSelect,
   DDSwitch,
   DDTable,
@@ -60,32 +61,28 @@ Do not generate a new shell or sidebar when this component package is available.
 
 ## Stable Distribution Plan
 
-The component package currently lives inside the DataDance repo at `packages/datadance-ui`. For cross-project use, this package must be distributed as a reusable dependency, not rewritten from prose.
+The component package is distributed from its standalone repository. For cross-project use, install the approved tagged release rather than rewriting it from prose.
 
 Current standalone package repository:
 
 - GitHub: `https://github.com/zaxison/datadance-ui`
-- Install: `npm install github:zaxison/datadance-ui#v0.1.0`
+- Current approved release: `v0.2.0`
+- Install: `npm install github:zaxison/datadance-ui#v0.2.0`
 
-Recommended approach for future updates:
-
-1. Move or mirror `packages/datadance-ui` into a standalone GitHub repo, for example `zaxison/datadance-ui`.
-2. Keep `package.json` at that repo root with package name `@datadance/ui`.
-3. Tag stable releases, for example `v0.1.0`, `v0.1.1`.
-4. Install from new projects with:
+Install in new projects with:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.1.0
+npm install github:zaxison/datadance-ui#v0.2.0
 ```
 
-GitHub works well for this as long as the reusable package is at the repo root. If the package remains only inside a monorepo subdirectory such as `packages/datadance-ui`, direct `npm install github:...` is less reliable. In that case, prefer a standalone repo or publish to npm/GitHub Packages.
+The standalone repository contains compiled ESM and compiled CSS in `dist`. The target project does not need Tailwind to render the package correctly.
 
 Alternative approaches:
 
 - Publish the package to a private or public npm registry as `@datadance/ui`.
 - Copy the entire `packages/datadance-ui` directory into the target project when network installation is unavailable.
 
-Until a standalone package is published, a target project can use a local copy:
+When network installation is unavailable, a target project can use a complete local copy of the package:
 
 ```jsx
 import { DataDanceShell } from './packages/datadance-ui/src';
@@ -98,7 +95,7 @@ import { DataDanceShell } from './packages/datadance-ui/src';
 - `DataDanceWorkSurface`: white `12px` rounded work surface primitive.
 - `DataDanceSidebar`: exact reusable DataDance sidebar implementation.
 - `defaultMenuConfig`: default DataDance menu structure.
-- `DD*` components: Yuanli-derived base components for actions, inputs, selectors, tabs, tables, cards, tags, alerts, modals, drawers, and pickers. If a component has not yet been migrated into this package, copy/use the matching local implementation from `src/components/datadance` before generating page-specific controls.
+- `DD*` components: Yuanli-derived base components for actions, inputs, selectors, tabs, tables, pagination, cards, tags, alerts, modals, drawers, and pickers.
 - `src/styles.css`: package-owned CSS, independent of Tailwind scanning.
 - `src/assets/*`: sidebar logo, expand icons, menu icons, user menu icons, avatar.
 
@@ -114,12 +111,12 @@ When using `$datadance-design` in another repo:
 2. Check whether a local `packages/datadance-ui` copy exists.
 3. If either exists, import `DataDanceShell` and package styles.
 4. If neither exists, add the package before building pages:
-   - Preferred: `npm install github:zaxison/datadance-ui#v0.1.0`.
+   - Required React/Vite release: `npm install github:zaxison/datadance-ui#v0.2.0`.
    - If the repo/tag differs, use the user-provided GitHub package source.
    - If network installation is unavailable, copy the full `packages/datadance-ui` directory into the target project.
 5. Import Yuanli/DataDance `DD*` components from the package when available.
-6. If a needed `DD*` component is not yet exposed by the package, copy the equivalent from `src/components/datadance`.
-7. Only if package installation/copying is impossible, implement a fallback from `references/app-shell.md`, `references/sidebar.md`, and `references/yuanli-component-contract.md`.
+6. If a required shared component is missing, stop and report the missing export. Do not invent an approximation inside page code.
+7. For a component outside the approved v0.2.0 set, ask whether to extend `@datadance/ui` or use a page-specific control. Never label a page-specific approximation as a Yuanli component.
 
 Never use a generic shell, sidebar, native dropdown, native date picker, or generic component-library default as a shortcut.
 
@@ -139,4 +136,4 @@ import { DataDanceShell } from './packages/datadance-ui/src';
 import './packages/datadance-ui/src/styles.css';
 ```
 
-When adding the package to a new project, verify the dependency is present before implementing the page. Do not continue with a hand-written sidebar unless install/copy has clearly failed.
+When adding the package to a new project, run `scripts/verify-datadance-ui.mjs` from the target project root before implementing the page. If install or verification fails, stop and report the blocker; do not continue with a hand-written sidebar or component.

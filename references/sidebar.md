@@ -60,7 +60,7 @@ Do not generate:
 - `span` elements with a colored background and `mask: url(...)` when the URL may fail; a missing mask renders as a solid rectangle.
 - Raw `/menu-*.svg` paths unless those files are actually present in the target project's public/assets path.
 
-For fallback implementations, render icons as inline SVG React components or `<img alt="" aria-hidden="true" />` with real imported assets. Verify normal, hover, and active states show icon silhouettes rather than filled squares.
+When maintaining the shared package itself, render icons as inline SVG React components or `<img alt="" aria-hidden="true" />` with real imported assets. Generated pages must consume the packaged icons and must not replace them.
 
 ## Dimensions
 

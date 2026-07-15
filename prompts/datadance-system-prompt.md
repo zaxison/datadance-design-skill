@@ -18,8 +18,10 @@ Before implementing the page, check whether the project has `@datadance/ui` or a
 If absent, install:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.1.0
+npm install github:zaxison/datadance-ui#v0.2.0
 ```
+
+Then run the skill's `scripts/verify-datadance-ui.mjs` from the target project root. Do not compose the page until verification passes. Installation or verification failure is a blocker, not permission to create an approximate replacement.
 
 Then use:
 
@@ -84,6 +86,7 @@ Required component families:
 - `DDTabs`
 - `DDTable`
 - `DDTag`
+- `DDPagination`
 - `DDCard`
 - `DDAlert`
 - `DDModal`
@@ -91,6 +94,8 @@ Required component families:
 - `DDPageHeader`
 
 Do not use native browser `<select>` dropdowns, native date picker popups, unstyled switches, generic shadcn/Ant/Material defaults, or raw Tailwind controls as final UI.
+
+The menu content comes from the package's `defaultMenuConfig` and remains fixed unless the user explicitly requests a menu change.
 
 Each interactive component must cover:
 

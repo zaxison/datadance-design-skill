@@ -6,9 +6,9 @@ The DataDance sidebar is a product component, not a visual suggestion. Do not tr
 
 Use this order for every DataDance page:
 
-1. **Package reuse**: install/import `@datadance/ui` and use `DataDanceShell` / `DataDanceSidebar`.
+1. **Package reuse**: install `github:zaxison/datadance-ui#v0.2.0`, run the skill verification script, and use `DataDanceShell` / `DataDanceSidebar`.
 2. **Local package copy**: copy `packages/datadance-ui` into the target project and import `DataDanceShell` from the copied package.
-3. **React local source reuse**: copy the current React sidebar implementation and its required assets/dependencies as code, preserving behavior.
+3. **React local source reuse**: only when package installation is unavailable, copy the complete current package/source implementation with every asset and dependency, preserving behavior, then run equivalent acceptance checks.
 4. **Static official bundle**: use an official static sidebar bundle only when one exists.
 5. **Stop and report**: if none of the above is possible, do not hand-write an approximate sidebar. Explain that exact sidebar reuse is blocked.
 

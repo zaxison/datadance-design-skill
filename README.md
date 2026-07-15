@@ -12,8 +12,17 @@ This repository contains two usable forms:
 New projects should install the shared DataDance UI package before generating pages:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.1.0
+npm install github:zaxison/datadance-ui#v0.2.0
 ```
+
+The repository also includes deterministic setup and verification scripts. Run them from the target React project root:
+
+```bash
+/absolute/path/to/datadance-design/scripts/bootstrap-datadance-ui.sh
+node /absolute/path/to/datadance-design/scripts/verify-datadance-ui.mjs
+```
+
+Do not generate the page when verification fails. Fix the package installation or report the blocker instead of producing an approximate sidebar or control set.
 
 Use it like this:
 
@@ -83,6 +92,6 @@ After implementation, verify against the DataDance checklist.
 ├── SKILL.md
 ├── agents/
 ├── references/
-└── prompts/
+├── prompts/
+└── scripts/
 ```
-

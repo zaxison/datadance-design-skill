@@ -4,10 +4,12 @@ Run this checklist before considering a generated or refactored page complete.
 
 ## Package
 
-- `@datadance/ui` is installed, or `packages/datadance-ui` is copied locally.
+- The approved `@datadance/ui` release is installed from `github:zaxison/datadance-ui#v0.2.0`, or a newer release explicitly approved by the user.
+- `scripts/verify-datadance-ui.mjs` passes from the target project root.
 - Page imports package styles.
-- Page uses `DataDanceShell` or an exact local package equivalent.
+- Page uses the packaged `DataDanceShell`.
 - DataDance sidebar is not a hand-written approximate static translation.
+- Package installation or verification failure stops delivery instead of triggering an approximate fallback.
 
 ## Shell
 
@@ -52,6 +54,18 @@ Run this checklist before considering a generated or refactored page complete.
 - Tables use `DDTable`.
 - Tags/status labels use `DDTag`.
 - Modals/drawers use `DDModal` / `DDDrawer`.
+- Pagination uses `DDPagination`.
+- Page headers and content groups use `DDPageHeader` / `DDCard` where applicable.
+
+## New Environment
+
+- Target is a supported React + Vite desktop project.
+- Shell computed position is `x: 0`, `y: 0`.
+- Sidebar computed width is `72px` collapsed and `200px` expanded.
+- Main surface computed top/right/bottom gutters are `8px` and radius is `12px`.
+- Packaged sidebar image assets have `naturalWidth > 0`.
+- A custom select overlay and custom date panel both open in the browser.
+- No native `<select>` or native date input is used for final UI.
 
 ## Interaction States
 

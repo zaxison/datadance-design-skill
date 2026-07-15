@@ -16,9 +16,10 @@ This skill is for desktop web only. Do not optimize for mobile unless the user e
 
 - DataDance standardized design specification Figma file: `8v0blpg1QYokdWihBG02gb`
 - Yuanli light component library Figma file: `HebSNPzZ5J8amDStIBiKLu`
-- Current local implementation reference: `src/components/Sidebar/index.jsx`, `src/App.jsx`, `src/index.css`, `src/config/menu.js`
+- Canonical implementation: `@datadance/ui` release `v0.2.0`, source repository `https://github.com/zaxison/datadance-ui`
+- Current DataDance app implementation is a maintenance reference only: `src/components/Sidebar/index.jsx`, `src/App.jsx`, `src/index.css`, `src/config/menu.js`
 
-Important: the Figma page named `菜单栏` contains older sidebar work. For sidebar behavior and visuals, prefer the current implemented sidebar in the local project unless the user says otherwise.
+Important: the Figma page named `菜单栏` contains older sidebar work. For sidebar behavior and visuals, use the packaged `DataDanceSidebar` unless the user explicitly approves a newer implementation.
 
 ## Workflow
 
@@ -43,8 +44,10 @@ Important: the Figma page named `菜单栏` contains older sidebar work. For sid
    - `references/yuanli-component-library.md` for the local reusable component library and Yuanli component implementation rules.
    - `references/sidebar-implementation-policy.md` before implementing any DataDance sidebar, especially in static demos or non-React projects.
    - `references/sidebar.md` for the required DataDance sidebar and user menu behavior.
+   - `references/new-environment-acceptance.md` when the target repo is new or does not already contain `@datadance/ui`.
 4. Implement using the local project's current approach:
-   - Before implementing a new project, check for `@datadance/ui` or `packages/datadance-ui`. If absent, install the GitHub package or copy the package first; do not hand-write the DataDance shell/sidebar as the first option.
+   - Before implementing a new React/Vite project, run `scripts/bootstrap-datadance-ui.sh` from the skill directory or install `github:zaxison/datadance-ui#v0.2.0` directly.
+   - Run the skill's `scripts/verify-datadance-ui.mjs` with the target project as the current working directory. Do not begin page composition until it passes.
    - React components.
    - Tailwind utility classes plus CSS variables.
    - `lucide-react` or existing SVG assets for icons.
@@ -54,6 +57,7 @@ Important: the Figma page named `菜单栏` contains older sidebar work. For sid
    - The page starts with the actual work surface, not a marketing landing page.
    - Sidebar, header, filters, tables, forms, and dialogs align to the DataDance spacing and state rules.
    - Run the required sidebar acceptance check in `references/sidebar.md`.
+   - Run the new-environment geometry and asset checks in `references/new-environment-acceptance.md`.
    - Text does not overflow controls.
    - Hover, active, focus, disabled, loading, and empty states are present where expected.
 6. For existing-page refactors, run a post-change regression check against the inventory from step 1:
@@ -64,13 +68,14 @@ Important: the Figma page named `菜单栏` contains older sidebar work. For sid
 ## Hard Rules
 
 - Page layout, page hierarchy, headers, app shell, spacing relationships, and major patterns must follow the DataDance standardized design specification (`8v0blpg1QYokdWihBG02gb`). Do not use generic admin/dashboard/page templates as substitutes.
-- Base components and their states/interactions must follow the Yuanli light component library (`HebSNPzZ5J8amDStIBiKLu`) or the local `src/components/datadance` implementation derived from it. Do not use raw browser-native or third-party default component visuals for final UI.
+- Base components and their states/interactions must follow the Yuanli light component library (`HebSNPzZ5J8amDStIBiKLu`) through the approved `@datadance/ui` implementation. Do not use raw browser-native or third-party default component visuals for final UI.
 - Yuanli consistency is enforced through code components first, not prose. Use `@datadance/ui` / `packages/datadance-ui` or a copied local equivalent. Read `references/yuanli-component-contract.md` when building or refactoring any page that contains inputs, selects, tabs, tables, date pickers, cascaders, tree selects, switches, modals, or drawers.
+- For React/Vite projects, `@datadance/ui` v0.2.0 or a newer user-approved release is the only allowed implementation source for the shared shell/sidebar and the exported `DD*` components. Do not re-create an exported component from Figma notes, screenshots, prose, or generic Arco defaults.
 - Every generated DataDance web app must use the DataDance app shell from `references/app-shell.md`: left `DataDanceSidebar`, `#EFF3F6` outer background, and a white `12px` rounded main work surface with `8px` top/right/bottom browser-edge gutters.
-- When available, reuse the shared `@datadance/ui` package or copy `packages/datadance-ui` from `https://github.com/zaxison/datadance` instead of reimplementing the shell or sidebar.
+- Install and reuse the tagged `@datadance/ui` package from `https://github.com/zaxison/datadance-ui`. A complete local package copy is allowed only when network installation is unavailable.
 - Do not manually translate or approximate the DataDance sidebar from React into static HTML/CSS/JS. Follow `references/sidebar-implementation-policy.md`: package reuse, local package copy, React source reuse, official static bundle if available, otherwise stop and report the blocker.
 - Treat pages reached directly from the sidebar as primary pages. Primary pages must use one of the fixed header variants from the DataDance Figma `header` page; do not improvise the top header structure.
-- Use the local `src/components/datadance` component library for Button/Input/Select/Tabs/Table/Tag/Card/Alert/Modal/Drawer/PageHeader before hand-writing those controls.
+- Use the `DD*` exports from `@datadance/ui` for Button/Input/Select/Tabs/Table/Tag/Pagination/Card/Alert/Modal/Drawer/PageHeader and the supported pickers. A missing required export or failed package installation is a blocker, not permission to hand-write an approximation.
 - Keep the sidebar/menu behavior consistent with the current implemented DataDance sidebar.
 - Sidebar icons must render as real icons. Do not use black rectangles, empty SVG placeholders, CSS-only icon boxes, or mask spans whose URL failure can become a solid block. Prefer packaged `DataDanceSidebar` icons; otherwise use imported SVG/image assets or stable lucide icons with the same 16px-20px sizing and hover/active color behavior.
 - Sidebar non-asset icons must use the same source as the current implementation. If the source uses lucide, import the same lucide icon or copy the official SVG path. Do not draw approximate replacement icons.

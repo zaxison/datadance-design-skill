@@ -15,7 +15,7 @@ This skill has two mandatory design sources. They are not inspiration references
 ## Non-Negotiable Rules
 
 - Page layout and page-level structure must come from the DataDance standardized design specification.
-- Component styling and component interaction states must come from Yuanli light components or the local `src/components/datadance` implementation derived from Yuanli.
+- Component styling and interaction states must come from Yuanli light components through the approved `@datadance/ui` release.
 - Do not substitute shadcn, raw Tailwind defaults, generic Arco defaults, Ant Design defaults, Material UI, Bootstrap, or browser-native component styling.
 - Do not use browser-native dropdown/date-picker/cascader/tree-select panels for final visual UI.
 - If the target project has another design system installed, use it only for implementation primitives when it can be visually overridden to match DataDance/Yuanli exactly.
@@ -29,7 +29,7 @@ When creating or refactoring a page:
 1. Establish the DataDance app shell and sidebar.
 2. Identify whether the page is primary or secondary.
 3. Apply the correct standardized DataDance header/page pattern.
-4. Use `src/components/datadance` components or create equivalent local DataDance/Yuanli components.
+4. Install and use `@datadance/ui` before composing business content.
 5. Only then compose business content.
 
 Do not start by choosing a generic UI template, admin dashboard kit, or landing-page layout.

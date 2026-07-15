@@ -25,8 +25,16 @@ Check for `@datadance/ui`.
 If missing:
 
 ```bash
-npm install github:zaxison/datadance-ui#v0.1.0
+npm install github:zaxison/datadance-ui#v0.2.0
 ```
+
+Run the skill's verification script from the target project root before changing page structure:
+
+```bash
+node /absolute/path/to/datadance-design/scripts/verify-datadance-ui.mjs
+```
+
+If installation or verification fails, stop and report the blocker. Do not replace the package with page-local approximations.
 
 Wrap the page with:
 
@@ -63,6 +71,7 @@ Replace raw or generic controls with Yuanli/DataDance components:
 - Tabs -> `DDTabs`
 - Table -> `DDTable`
 - Tag/status -> `DDTag`
+- Pagination -> `DDPagination`
 - Modal/drawer -> `DDModal` / `DDDrawer`
 
 Never leave native browser dropdown/date picker visuals in final UI.
